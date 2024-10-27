@@ -142,7 +142,6 @@ header {
     position: relative;
     font-size: 4em;
     font-weight: 600;
-    -webkit-box-reflect: below -1px;
     text-shadow: 0 0px 40px rgba(50, 205, 50, 0.5);
 }
 .NL {
@@ -261,7 +260,6 @@ header {
     font-size: 7em;
     font-weight: 600;
     margin: 0.8em;
-    -webkit-box-reflect: below -1px;
     text-shadow: 0 0px 40px rgba(50, 205, 50, 0.5);
     margin-top: 50px;
 }
