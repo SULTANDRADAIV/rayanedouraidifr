@@ -1,472 +1,623 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: url("image.png"), auto; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: url("image.png"), auto; 
 }
 
-html{
-    scroll-behavior: smooth;
+@font-face {
+  font-family: 'MyFont'; /* You can choose any name you want */
+  src: url('Trends.ttf') format('truetype'); /* Path to your font file */
+  font-weight: normal; /* Specify font weight if necessary */
+  font-style: normal; /* Specify font style if necessary */
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: #212121;
-    min-height: 100vh;
-    overflow: auto;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    cursor: url("image.png"), auto;
+  background-color: #212121;
+  min-height: 100vh;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  cursor: url("image.png"), auto;
 }
 
 .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #212121; 
-    margin-bottom: 0; 
-    padding-bottom: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #212121; 
+  margin-bottom: 0; 
+  padding-bottom: 0; 
 }
 
 .numbers {
-    position: relative;
-    cursor: default;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  position: relative;
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-
 .main::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    height: 190px;
-    width: 100%;
-    background: linear-gradient( to top,#191919,transparent);
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 190px;
+  width: 100%;
+  background: linear-gradient( to top,#191919,transparent);
 }
 
 .numbers span {
-    position: relative;
-    font-size: 2.45em;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.01);
-    line-height: 0.9em;
-    transition: 1s;
-    user-select: none;
+  position: relative;
+  font-size: 2.45em;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.01);
+  font-family: 'MyFont', sans-serif;
+  line-height: 0.9em;
+  transition: 1s;
+  user-select: none;
 }
 
 .numbers span:hover {
-    transition: 0s;
-    color: #fff;
-    text-shadow: 0 0 10px limegreen,
-                 0 0 20px limegreen,
-                 0 0 40px limegreen,
-                 0 0 80px limegreen,
-                 0 0 100px limegreen;
-    z-index: 1000;
+  transition: 0s;
+  color: #fff;
+  text-shadow: 0 0 10px #DDA0DD,
+               0 0 20px #DDA0DD,
+               0 0 40px #DDA0DD,
+               0 0 80px #DDA0DD,
+               0 0 100px #DDA0DD;
+  z-index: 1000;
 }
 
 header {
-    display: flex;
-    justify-content: center; 
-    gap: 20px; 
-    padding: 20px 40px;
-    backdrop-filter: blur(15px) saturate(150%);
-    background: linear-gradient(#ffffff1a, #ffffff0a); 
-    backdrop-filter: blur(15px) saturate(150%);
-    -webkit-backdrop-filter: blur(15px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    position: fixed;
-    width: calc(100% - 40px);
-    top: 10px;
-    left: 50%;
-    margin-right: 20px;
-    transform: translateX(-50%);
-    z-index: 10000;
-    border-radius: 12px; 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
-    cursor: url("image.png"), auto; 
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  padding: 20px 40px;
+  backdrop-filter: blur(15px) saturate(150%);
+  background: linear-gradient(#ffffff1a, #ffffff0a); 
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: fixed;
+  width: calc(100% - 40px);
+  top: 10px;
+  left: 50%;
+  margin-right: 20px;
+  transform: translateX(-50%);
+  z-index: 10000;
+  border-radius: 12px; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  cursor: url("image.png"), auto; 
 }
 
-
 .button {
-    cursor: pointer;
-    position: relative;
-    padding: 10px 24px;
-    font-size: 18px;
-    color: limegreen; 
-    border: 2px solid limegreen; 
-    border-radius: 30px;
-    background-color: transparent;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    overflow: hidden;
-    margin-right: 5px;
-    cursor: url("image.png"), auto; 
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: #DDA0DD; 
+  border: 2px solid #da84da; 
+  font-family: 'MyFont', sans-serif;
+  border-radius: 30px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+  margin-right: 5px;
+  cursor: url("image.png"), auto; 
 }
 
 .button::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 50px;
-    height: 50px;
-    border-radius: inherit;
-    scale: 0;
-    z-index: -1;
-    background-color: rgba(50, 205, 50, 0.5); 
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    cursor: url("image.png"), auto; 
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #DDA0DD80; 
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: url("image.png"), auto; 
 }
 
 .button:hover::before {
-    scale: 3;
+  scale: 3;
 }
 
 .button:hover {
-    scale: 1.1;
-    box-shadow: 0 0px 40px rgba(50, 205, 50, 0.5); 
-    cursor: url("image.png"), auto; 
+  scale: 1.1;
+  box-shadow: 0 0px 40px #DDA0DD80; 
+  cursor: url("image.png"), auto; 
 }
 
 .button:active {
-    scale: 1;
-    background-color: rgba(50, 205, 50, 0.3); 
-    cursor: url("image.png"), auto; 
+  scale: 1;
+  background-color: #DDA0DD4d; 
+  cursor: url("image.png"), auto; 
 }
 
-.NL h1{
-    color: limegreen;
-    position: relative;
-    font-size: 4em;
-    font-weight: 600;
-    text-shadow: 0 0px 40px rgba(50, 205, 50, 0.5);
+.NL h1 {
+  color: #DDA0DD;
+  position: relative;
+  font-size: 4em;
+  font-weight: 600;
+  -webkit-box-reflect: below -1px;
+  text-shadow: 0 0px 40px #DDA0DD80;
+  font-family: 'MyFont', sans-serif;
 }
+
 .NL {
-    text-align: center;
-    font-size: 1.5em;
-    color: limegreen;
-    background-color: #191919; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+  text-align: center;
+  font-size: 1.5em;
+  color: #DDA0DD;
+  background-color: #191919; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.bigcard h2{
+  color: #DDA0DD;
+  position: relative;
+  font-size: 3em;
+  margin: 15px;
+  font-weight: 600;
+  text-shadow: 0 0px 40px #DDA0DD80;
+  font-family: 'MyFont', sans-serif;
+}
+
+.fa-user{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-users{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-crown{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-tree{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-piggy-bank{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-scale-unbalanced{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.fa-scale-balanced{
+  color: #fff;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #ffff,
+  0 0 40px #ffff,
+  0 0 80px #ffff,
+  0 0 100px #ffff;
+  font-size: 50px;
+}
+
+.bigcard p{
+  color: #fff;
+  text-shadow: 0 0px 40px rgb(255, 255, 255);
+  font-weight: 300;
+  font-family: 'MyFont', sans-serif;
+  margin: 15px;
+}
+
+.bigcard{
+  width: 95%;
+  height: 300px;
+  margin: 50px;
+  border-radius: 15px;
+  background-color: #1b1b1b;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  animation: shadow 3s infinite ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.806);
 }
 
 .cards-row {
-    display: flex; 
-    justify-content: center; 
-    flex-wrap: wrap; 
-    gap: 20px; 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 20px; 
 }
 
 .card-container {
-    width: 300px; 
-    height: 300px; 
-    margin: 10px; 
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.806);
-    overflow: hidden;
+  width: 300px; 
+  height: 300px; 
+  margin: 10px; 
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.806);
+  overflow: hidden;
 }
 
-  
-.card-container p{
-    font-size: medium;
-    font-weight: 700;
+.card-container p {
+  font-weight: 300;
+  font-size: 15px;
+  font-family: 'MyFont', sans-serif;
 }
-
 
 .card {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
-  
+
 .card .front-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
-  
+
 .card .front-content p {
-    font-size: 32px;
-    font-weight: 700;
-    opacity: 1;
-    background: linear-gradient(-45deg, rgba(50, 205, 50, 0.897) 0%, rgb(0, 255, 0) 100% );
-    text-shadow: 0 0px 40px rgb(50, 205, 50);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(-45deg, #DDA0DDe5 0%, #DDA0DD 100%);
+  text-shadow: 0 0px 40px #DDA0DD;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
-  
+
 .card .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 10px;
-    background: linear-gradient(-45deg, rgba(35, 147, 35, 0.897) 0%, rgb(0, 255, 0) 100% );
-    color: #e8e8e8;
-    text-shadow: 0 0px 40px rgb(255, 255, 255);
-    padding: 20px;
-    line-height: 1.5;
-    border-radius: 5px;
-    pointer-events: none;
-    transform: translateY(-96%);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  background: linear-gradient(-45deg, #a26aa2 0%, #DDA0DD 100%);
+  color: #e8e8e8;
+  text-shadow: 0 0px 40px #fff;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateY(-96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
-  
+
 .card .content .heading {
-    font-size: 32px;
-    font-weight: 700;
+  font-size: 32px;
+  font-weight: 700;
 }
-  
+
 .card:hover .content {
-    transform: translateY(0);
+  transform: translateY(0);
 }
-  
+
 .card:hover .front-content {
-    transform: translateY(30%);
+  transform: translateY(30%);
 }
-  
+
 .card:hover .front-content p {
-    opacity: 0;
+  opacity: 0;
 }
-  
+
 .FS {
-    display: flex;
-    text-align: center;
-    flex-wrap: wrap;
-    align-items: center;
-    color: limegreen;
-    background-color: #191919;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #DDA0DD;
+  background-color: #191919;
+  justify-content: center;
 }
 
-.FS h1{
-    color: limegreen;
-    font-size: 7em;
-    font-weight: 600;
-    margin: 0.8em;
-    text-shadow: 0 0px 40px rgba(50, 205, 50, 0.5);
-    margin-top: 50px;
+.bigcard h2{
+  color: #DDA0DD;
+  position: relative;
+  font-size: 3em;
+  margin: 15px;
+  font-weight: 600;
+  text-shadow: 0 0px 40px #DDA0DD80;
 }
 
-.container{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    flex-wrap: wrap;
-    z-index: 1;
+.FS .bigcard p{
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
 }
 
-.container .cards{
-    position: relative;
-    width: 280px;
-    height: 400px;
-    margin: 30px;
-    box-shadow: 20px 20px 50px rgb(0, 0, 0, 0.5);
-    border-radius: 15px;
-    background: rgb(255, 255, 255, 0.1);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
+.FS h1 {
+  color: #DDA0DD;
+  font-size: 7em;
+  font-weight: 600;
+  margin: 0.8em;
+  -webkit-box-reflect: below -1px;
+  text-shadow: 0 0px 40px #DDA0DD80;
+  font-family: 'MyFont', sans-serif;
+  margin-top: 50px;
 }
 
-.container .cards .content{
-    padding: 20px;
-    text-align: center;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: 0.5s;
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  z-index: 1;
 }
 
-.container .cards:hover .content{
-    transform: translateY(0px);
-    opacity: 1;
+.container .cards {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  margin: 30px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
 }
 
-.container .cards .content h2{
-    position: absolute;
-    top: -60px;
-    right: 30px;
-    font-size: 7em;
-    color: rgba(255, 255, 255, 0.05);
-    pointer-events: none;
+.container .cards .content {
+  padding: 20px;
+  text-align: center;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 0.5s;
 }
 
-.container .cards .content h3{
-    font-size: 1.8em;
-    color: limegreen;
-    z-index: 1;
-    text-shadow: 0 0 10px limegreen,
-                 0 0 20px limegreen,
-                 0 0 40px limegreen,
-                 0 0 80px limegreen,
-                 0 0 100px limegreen;
+.container .cards:hover .content {
+  transform: translateY(0);
+  opacity: 1;
 }
 
-.container .cards .content p{
-    font-size: 1.1em;
-    color: #fff;
-    text-shadow: 0 0px 40px rgb(255, 255, 255);
-    font-weight: 700;
+.container .cards .content h2 {
+  position: absolute;
+  top: -70px;
+  right: 30px;
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  font-weight: 600;
+  font-family: 'MyFont', sans-serif;
 }
 
-/* From Uiverse.io by elijahgummer */ 
+.container .cards .content h3 {
+  font-size: 1.7em;
+  color: #dd79dd;
+  text-shadow: 0 0px 40px #DDA0DD80;
+  font-family: 'MyFont', sans-serif;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.container .cards .content p {
+  font-size: 1em;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 0px 40px rgb(255, 255, 255);
+  font-family: 'MyFont', sans-serif;
+}
+
+.cards a {
+  color: #DDA0DD;
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 15px;
+  background-color: #dd79dd;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 400;
+}
+
 .radio {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background: #191919;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: #191919;
+}
+
+.radio > input {
+  position: absolute;
+  appearance: none;
+}
+
+.radio > label {
+  cursor: pointer;
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.radio > label > svg {
+  fill: #666;
+  transition: fill 0.3s ease;
+}
+
+.radio > label::before,
+.radio > label::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #DDA0DD;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+  animation: particle-explosion 1s ease-out;
+}
+
+.radio > label::before {
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+}
+
+.radio > label::after {
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+}
+
+.radio > label:hover::before,
+.radio > label:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.5);
+}
+
+.radio > label:hover {
+  transform: scale(1.2);
+  animation: pulse 0.6s infinite alternate;
+}
+
+/* Star glow and animation on hover */
+.radio > label:hover > svg {
+  fill: #DDA0DD;
+  filter: drop-shadow(0 0 15px #DDA0DD);
+  animation: shimmer 1s ease infinite alternate;
+}
+
+.radio > input:checked + label > svg {
+  fill: #DDA0DD;
+  filter: drop-shadow(0 0 15px #DDA0DD);
+  animation: pulse 0.8s infinite alternate;
+}
+
+.radio > input:checked + label ~ label > svg,
+.radio > input:checked + label > svg {
+  fill: #DDA0DD; /* Highlight the stars */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  
-  .radio > input {
-    position: absolute;
-    appearance: none;
+  100% {
+    transform: scale(1.1);
   }
-  
-  .radio > label {
-    cursor: pointer;
-    font-size: 30px;
-    position: relative;
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-  
-  .radio > label > svg {
-    fill: #666;
-    transition: fill 0.3s ease;
-  }
-  
-  .radio > label::before,
-  .radio > label::after {
-    content: "";
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: #ff9e0b;
-    border-radius: 50%;
+}
+
+@keyframes particle-explosion {
+  0% {
     opacity: 0;
-    transform: scale(0);
-    transition:
-      transform 0.4s ease,
-      opacity 0.4s ease;
-    animation: particle-explosion 1s ease-out;
+    transform: scale(0.5);
   }
-  
-  .radio > label::before {
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-  }
-  
-  .radio > label::after {
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-  }
-  
-  .radio > label:hover::before,
-  .radio > label:hover::after {
+  50% {
     opacity: 1;
-    transform: translateX(-50%) scale(1.5);
-  }
-  
-  .radio > label:hover {
     transform: scale(1.2);
-    animation: pulse 0.6s infinite alternate;
   }
-  
-  /* Star glow and animation on hover */
-  .radio > label:hover > svg {
-    fill: #ff9e0b;
-    filter: drop-shadow(0 0 15px rgba(255, 158, 11, 0.9));
-    animation: shimmer 1s ease infinite alternate;
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
   }
-  
-  .radio > input:checked + label > svg {
-    fill: #ff9e0b;
-    filter: drop-shadow(0 0 15px rgba(255, 158, 11, 0.9));
-    animation: pulse 0.8s infinite alternate;
+}
+
+@keyframes shimmer {
+  0% {
+    filter: drop-shadow(0 0 10px #DDA0DD80);
   }
-  
-  .radio > input:checked + label ~ label > svg,
-  .radio > input:checked + label > svg {
-    fill: #ff9e0b; /* Highlight the stars */
+  100% {
+    filter: drop-shadow(0 0 20px #DDA0DD);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.1);
-    }
-  }
-  
-  @keyframes particle-explosion {
-    0% {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-  }
-  
-  @keyframes shimmer {
-    0% {
-      filter: drop-shadow(0 0 10px rgba(255, 158, 11, 0.5));
-    }
-    100% {
-      filter: drop-shadow(0 0 20px rgba(255, 158, 11, 1));
-    }
-  }
-  
-  .radio > input:checked + label:hover,
-  .radio > input:checked + label:hover ~ label {
-    fill: #e58e09;
-  }
-  
-  .radio > label:hover,
-  .radio > label:hover ~ label {
-    fill: #ff9e0b;
-  }
-  
-  .radio input:checked ~ label svg {
-    fill: #ffa723;
-  }
-  
-  .rating-counts p{
-    color: #fff;
-    text-shadow: 0 0px 40px rgb(255, 255, 255);
-    font-weight: 700;
+}
+
+.radio > input:checked + label:hover,
+.radio > input:checked + label:hover ~ label {
+  fill: #DDA0DD;
+}
+
+.radio > label:hover,
+.radio > label:hover ~ label {
+  fill: #DDA0DD;
+}
+
+.radio input:checked ~ label svg {
+  fill: #DDA0DD;
+}
+
+.rating-counts p{
+  color: #fff;
+  text-shadow: 0 0px 40px rgb(255, 255, 255);
+  font-family: 'MyFont', sans-serif;
+  font-weight: 700;
+}
+
+.radio button{
+  display: none;
+}
+@media (max-width: 768px) {
+  .card-container {
+      width: 100%; /* Full width on smaller screens */
   }
 
-  .radio button{
-    display: none;
+  .cards-row {
+      flex-direction: column;
+      align-items: center;
   }
+}
