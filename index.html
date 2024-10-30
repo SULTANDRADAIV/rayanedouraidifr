@@ -159,7 +159,6 @@
         </div>
         <button class="button" id="resetButton">Reset Ratings</button>
     </div>
-   
     </div>
     <script type="text/javascript" src="vanilla-tilt.js"></script>
     <script>VanillaTilt.init(document.querySelectorAll(".cards"),{
@@ -222,72 +221,42 @@
                 document.getElementById(`count-${star}`).textContent = 0;
             });
         });
-        
+        document.addEventListener('DOMContentLoaded', function() {
+    // Add click event listener for all buttons
+    const buttons = document.querySelectorAll('button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim(); // Get the button text
+            // Send event to Google Analytics
+            analytics.logEvent('button_click', {
+                button_name: buttonText
+            });
+        });
+    });
+});
     </script>
-            <script type="module">
-                // Firebase Imports
-                import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-                import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";  
-        
-                // Firebase Config
-                const firebaseConfig = {
-                    apiKey: "AIzaSyCKZcmAxj2XPXy_FV9wAcKEGJq8XklV5LI",
-                    authDomain: "project-fr-14178.firebaseapp.com",
-                    projectId: "project-fr-14178",
-                    storageBucket: "project-fr-14178.appspot.com",
-                    messagingSenderId: "308493760759",
-                    appId: "1:308493760759:web:bb03e5491667cd23e97bf2",
-                    measurementId: "G-WBG3M414XJ"
-                };
-        
-                // Initialize Firebase
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-        
-                // Display single comment function
-                const displayComment = (comment) => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'comment-item';
-                    listItem.textContent = comment.text;
-                    document.getElementById('commentsList').appendChild(listItem);
-                };
-        
-                // Load existing comments on page load
-                const loadComments = async () => {
-                    const commentsList = document.getElementById('commentsList');
-                    commentsList.innerHTML = ''; // Clear existing list
-                    const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
-                    const querySnapshot = await getDocs(q);
-                    querySnapshot.forEach((doc) => {
-                        displayComment(doc.data());
-                    });
-                };
-        
-                // Handle comment submission
-                document.getElementById('submitComment').addEventListener('click', async () => {
-                    const commentInput = document.getElementById('commentInput');
-                    const commentText = commentInput.value.trim();
-                    if (commentText) {
-                        // Add comment to Firestore
-                        await addDoc(collection(db, 'comments'), {
-                            text: commentText,
-                            timestamp: new Date()
-                        });
-                        commentInput.value = '';
-                    }
-                });
-        
-                // Real-time updates with Firestore listener
-                const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
-                onSnapshot(q, (querySnapshot) => {
-                    document.getElementById('commentsList').innerHTML = ''; // Clear list before re-rendering
-                    querySnapshot.forEach((doc) => {
-                        displayComment(doc.data());
-                    });
-                });
-        
-                // Load comments on page load
-                loadComments();
-            </script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCKZcmAxj2XPXy_FV9wAcKEGJq8XklV5LI",
+      authDomain: "project-fr-14178.firebaseapp.com",
+      projectId: "project-fr-14178",
+      storageBucket: "project-fr-14178.firebasestorage.app",
+      messagingSenderId: "308493760759",
+      appId: "1:308493760759:web:bb03e5491667cd23e97bf2",
+      measurementId: "G-WBG3M414XJ" // Make sure this is correct
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+  
 </body>
 </html>
