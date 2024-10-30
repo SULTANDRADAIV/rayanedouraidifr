@@ -159,6 +159,14 @@
         </div>
         <button class="button" id="resetButton">Reset Ratings</button>
     </div>
+    <div id="commentSection">
+        <h2>Comments</h2>
+        <ul class="comment-list" id="commentsList"></ul>
+        <div class="comment-form">
+            <textarea id="commentInput" rows="3" placeholder="Leave a comment..."></textarea>
+            <button id="submitComment">Submit</button>
+        </div>
+    </div>
     <script type="text/javascript" src="vanilla-tilt.js"></script>
     <script>VanillaTilt.init(document.querySelectorAll(".cards"),{
 		max: 25,
@@ -220,7 +228,55 @@
                 document.getElementById(`count-${star}`).textContent = 0;
             });
         });
+        
     </script>
-    
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";  
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKZcmAxj2XPXy_FV9wAcKEGJq8XklV5LI",
+            authDomain: "project-fr-14178.firebaseapp.com",
+            projectId: "project-fr-14178",
+            storageBucket: "project-fr-14178.appspot.com",
+            messagingSenderId: "308493760759",
+            appId: "1:308493760759:web:bb03e5491667cd23e97bf2",
+            measurementId: "G-WBG3M414XJ"
+        };
+
+        // Initialize Firebase and Firestore
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Comment Submission
+        document.getElementById('submitComment').addEventListener('click', async () => {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                // Add comment to Firestore
+                await addDoc(collection(db, 'comments'), {
+                    text: commentText,
+                    timestamp: new Date()
+                });
+                commentInput.value = '';
+            }
+        });
+
+        // Real-time Listener to Load Comments
+        const commentsList = document.getElementById('commentsList');
+        const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
+        onSnapshot(q, (querySnapshot) => {
+            commentsList.innerHTML = ''; // Clear the list before re-rendering
+            querySnapshot.forEach((doc) => {
+                const comment = doc.data();
+                const listItem = document.createElement('li');
+                listItem.className = 'comment-item';
+                listItem.textContent = comment.text;
+                commentsList.appendChild(listItem);
+            });
+        });
+    </script>
 </body>
 </html>
