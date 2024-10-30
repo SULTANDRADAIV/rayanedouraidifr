@@ -230,53 +230,70 @@
         });
         
     </script>
-    <script type="module">
-        // Firebase Imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";  
-
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCKZcmAxj2XPXy_FV9wAcKEGJq8XklV5LI",
-            authDomain: "project-fr-14178.firebaseapp.com",
-            projectId: "project-fr-14178",
-            storageBucket: "project-fr-14178.appspot.com",
-            messagingSenderId: "308493760759",
-            appId: "1:308493760759:web:bb03e5491667cd23e97bf2",
-            measurementId: "G-WBG3M414XJ"
-        };
-
-        // Initialize Firebase and Firestore
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Comment Submission
-        document.getElementById('submitComment').addEventListener('click', async () => {
-            const commentInput = document.getElementById('commentInput');
-            const commentText = commentInput.value.trim();
-            if (commentText) {
-                // Add comment to Firestore
-                await addDoc(collection(db, 'comments'), {
-                    text: commentText,
-                    timestamp: new Date()
+            <script type="module">
+                // Firebase Imports
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+                import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";  
+        
+                // Firebase Config
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCKZcmAxj2XPXy_FV9wAcKEGJq8XklV5LI",
+                    authDomain: "project-fr-14178.firebaseapp.com",
+                    projectId: "project-fr-14178",
+                    storageBucket: "project-fr-14178.appspot.com",
+                    messagingSenderId: "308493760759",
+                    appId: "1:308493760759:web:bb03e5491667cd23e97bf2",
+                    measurementId: "G-WBG3M414XJ"
+                };
+        
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+        
+                // Display single comment function
+                const displayComment = (comment) => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'comment-item';
+                    listItem.textContent = comment.text;
+                    document.getElementById('commentsList').appendChild(listItem);
+                };
+        
+                // Load existing comments on page load
+                const loadComments = async () => {
+                    const commentsList = document.getElementById('commentsList');
+                    commentsList.innerHTML = ''; // Clear existing list
+                    const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
+                    const querySnapshot = await getDocs(q);
+                    querySnapshot.forEach((doc) => {
+                        displayComment(doc.data());
+                    });
+                };
+        
+                // Handle comment submission
+                document.getElementById('submitComment').addEventListener('click', async () => {
+                    const commentInput = document.getElementById('commentInput');
+                    const commentText = commentInput.value.trim();
+                    if (commentText) {
+                        // Add comment to Firestore
+                        await addDoc(collection(db, 'comments'), {
+                            text: commentText,
+                            timestamp: new Date()
+                        });
+                        commentInput.value = '';
+                    }
                 });
-                commentInput.value = '';
-            }
-        });
-
-        // Real-time Listener to Load Comments
-        const commentsList = document.getElementById('commentsList');
-        const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
-        onSnapshot(q, (querySnapshot) => {
-            commentsList.innerHTML = ''; // Clear the list before re-rendering
-            querySnapshot.forEach((doc) => {
-                const comment = doc.data();
-                const listItem = document.createElement('li');
-                listItem.className = 'comment-item';
-                listItem.textContent = comment.text;
-                commentsList.appendChild(listItem);
-            });
-        });
-    </script>
+        
+                // Real-time updates with Firestore listener
+                const q = query(collection(db, 'comments'), orderBy('timestamp', 'desc'));
+                onSnapshot(q, (querySnapshot) => {
+                    document.getElementById('commentsList').innerHTML = ''; // Clear list before re-rendering
+                    querySnapshot.forEach((doc) => {
+                        displayComment(doc.data());
+                    });
+                });
+        
+                // Load comments on page load
+                loadComments();
+            </script>
 </body>
 </html>
