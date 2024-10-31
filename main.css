@@ -470,9 +470,20 @@ header {
   font-weight: 400;
 }
 
+.FS .fr h2{
+  font-weight: 900;
+  font-family: 'MyFont', sans-serif;
+  margin: 15px;
+  color: #ffffff;
+  text-shadow: 0 0px 40px rgb(255, 255, 255);
+  font-size: 2em;
+}
+
 .radio {
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 10px;
   background: #191919;
 }
