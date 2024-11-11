@@ -736,3 +736,39 @@ header {
   cursor: url("image.png"), auto;
 }
 
+/* Changer la couleur de fond de la section des commentaires */
+#disqus_thread {
+    background-color: #191919;  /* Couleur de fond #191919 */
+    color: #dd79dd;  /* Couleur du texte #dd79dd */
+}
+
+/* Personnaliser les commentaires eux-mêmes */
+#disqus_thread .dsq-comment {
+    background-color: #191919;  /* Couleur de fond des commentaires */
+    border-bottom: 1px solid #333;  /* Ajouter une bordure discrète pour chaque commentaire */
+    color: #dd79dd;  /* Couleur du texte dans les commentaires */
+}
+
+/* Personnaliser les liens dans les commentaires (par exemple, le nom de l'utilisateur) */
+#disqus_thread .dsq-comment-user a {
+    color: #dd79dd;  /* Couleur du nom de l'utilisateur */
+    font-weight: bold;
+}
+
+/* Personnaliser le fond du formulaire de réponse */
+#disqus_thread .dsq-reply {
+    background-color: #191919;  /* Couleur de fond du formulaire de réponse */
+    color: #dd79dd;  /* Couleur du texte dans le formulaire de réponse */
+}
+
+/* Personnaliser les boutons (comme le bouton "Envoyer") */
+#disqus_thread .dsq-comment-actions .dsq-button {
+    background-color: #dd79dd;  /* Couleur de fond des boutons */
+    color: #191919;  /* Couleur du texte des boutons */
+}
+
+#disqus_thread .dsq-comment-actions .dsq-button:hover {
+    background-color: #f5a5f5;  /* Couleur de fond au survol */
+    color: #191919;  /* Couleur du texte au survol */
+}
+
